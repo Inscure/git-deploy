@@ -22,6 +22,7 @@ function isUp2Date {
 function execute {
     printf "\e[31m$@\e[0m\n"
     echo `$@`
+    printf "\n"
 }
 
 function toCommit {
