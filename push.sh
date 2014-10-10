@@ -15,25 +15,25 @@ function isUp2Date {
     fi;
 }
 
-commands="git fetch"
+function execute {
+    echo "$@"
+    status2=`$@`
+}
 
-echo "$commands"
+status=`execute "git fetch"`
 
-status=`$commands`
+echo "$status"
 
 
+status=`execute "git merge origin/master"`
+echo "$status"
 
-commands2="git merge origin/master"
-echo "$commands2"
-status2=`$commands2`
-
-if [[ -z $status2 ]]; then
+if [[ -z $status ]]; then
      echo "Wystąpił błąd"
 else
     if [ `isUp2Date` -eq 0  ]; then
-        commands3="git push origin $current_branch"
-        echo "$commands3"
-        status3=`$commands3`
+        status=`execute "git push origin $current_branch"`
+        echo "$status"
 
         if [[ `isUp2Date` -eq 0 ]]; then
             echo "Wystąpił błąd"
