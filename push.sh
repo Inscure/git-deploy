@@ -2,11 +2,9 @@
 
 current_branch=`git rev-parse --abbrev-ref HEAD`
 
-
-
 function isUp2Date {
-    a=`git rev-parse master`
-    b=`git rev-parse origin/master`
+    local a=`git rev-parse master`
+    local b=`git rev-parse origin/master`
 
     if [ $a == $b ]; then
         echo 1;
@@ -17,19 +15,43 @@ function isUp2Date {
 
 function execute {
     echo "$@"
-    status2=`$@`
+    local status2=`$@`
 }
 
+function toCommit {
+    local status=`git status --porcelain`
+
+    if [[ -z $status ]]; then
+        echo 0;
+    else
+        echo 1;
+    fi;
+}
+
+if [ `toCommit` ]; then
+    echo "Znaleziono zmiany, które nie są zacommitowane. Zacommituj zmiany."
+    exit;
+fi;
+
 status=`execute "git fetch"`
-
 echo "$status"
-
 
 status=`execute "git merge origin/master"`
 echo "$status"
 
+if [ `toCommit` ]; then
+    echo "Rozwiąż konflikt"
+    exit;
+fi;
+
 status=`execute "git merge origin/$current_branch"`
 echo "$status"
+
+if [ `toCommit` ]; then
+    echo "Rozwiąż konflikt"
+    exit;
+fi;
+
 
 if [[ -z $status ]]; then
      echo "Wystąpił błąd"
@@ -47,4 +69,5 @@ else
         echo "Twoje zmiany zostały już wysłane do repozytorium"
     fi;
 fi;
+
 
