@@ -44,7 +44,7 @@ if [ $current_branch != $source_branch ]; then
     echo `execute "git checkout $source_branch"`
 fi;
 
- exec execute "git fetch"
+ exec $(execute) "git fetch"
 
 # Aktualizacja bieżącego brancha o branch master
  exec execute "git merge origin/master"
