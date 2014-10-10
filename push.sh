@@ -30,8 +30,7 @@ status2=`$commands2`
 if [[ -z $status2 ]]; then
      echo "Wystąpił błąd"
 else
-    isUp2Date=`isUp2Date`
-    if [ "$isUp2Date" -eq 0  ]; then
+    if [ `isUp2Date` -eq 0  ]; then
         commands3="git push origin $current_branch"
         echo "$commands3"
         status3=`$commands3`
