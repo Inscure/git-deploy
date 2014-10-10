@@ -69,8 +69,7 @@ fi;
 
 # Push zmian
 if [ `isUp2Date` -eq 0  ]; then
-    status=`execute "git push origin $source_branch"`
-    echo "$status"
+    execute "git push origin $source_branch"
 
     if [[ `isUp2Date` -eq 0 ]]; then
         echo "Wystąpił błąd"
