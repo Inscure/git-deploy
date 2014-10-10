@@ -39,7 +39,7 @@ function toCommit {
 
 # Weryfikacja, czy są jakieś zmiany do zatwierdzenia
 if [ `toCommit` -eq 1 ]; then
-    echo "Znaleziono zmiany, które nie są zatwierdzone."
+    echo "Znaleziono zmiany, które nie są zatwierdzone.\n"
     exit;
 fi;
 
@@ -53,7 +53,7 @@ execute "git fetch"
 execute "git merge origin/master"
 
 if [ `toCommit` -eq 1 ]; then
-    echo "Rozwiąż konflikt"
+    echo "Rozwiąż konflikt\n"
     exit;
 fi;
 
@@ -63,7 +63,7 @@ if [ "$source_branch" != "master" ]; then
     execute "git merge origin/$source_branch"
 
     if [ `toCommit` -eq 1 ]; then
-        echo "Rozwiąż konflikt"
+        echo "Rozwiąż konflikt\n"
         exit;
     fi;
 
@@ -78,9 +78,9 @@ if [ `isUp2Date` -eq 0  ]; then
         exit
     fi;
 
-    echo "Zmiany z brancha $source_branch zostały zamieszczone w zdalnym repozytorium."
+    printf "Zmiany z brancha $source_branch zostały zamieszczone w zdalnym repozytorium.\n"
 else
-    echo "Bieżący branch jest aktualny"
+    echo "Bieżący branch jest aktualny\n"
 fi;
 
 if [ "$#" -gt 0 ]; then
@@ -96,4 +96,4 @@ if [ $current_branch != $source_branch ]; then
     execute "git checkout $current_branch"
 fi;
 
-echo "Push zakończony sukcesem"
+echo "Push zakończony sukcesem\n"
