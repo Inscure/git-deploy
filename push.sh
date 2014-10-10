@@ -28,14 +28,16 @@ function toCommit {
     fi;
 }
 
+# Weryfikacja, czy są jakieś zmiany do zatwierdzenia
 if [ `toCommit` -eq 1 ]; then
-    echo "Znaleziono zmiany, które nie są zacommitowane. Zacommituj zmiany."
+    echo "Znaleziono zmiany, które nie są zatwierdzone."
     exit;
 fi;
 
 status=`execute "git fetch"`
 echo "$status"
 
+# Aktualizacja bieżącego brancha o branch master
 status=`execute "git merge origin/master"`
 echo "$status"
 
@@ -44,6 +46,7 @@ if [ `toCommit` -eq 1 ]; then
     exit;
 fi;
 
+# Aktualizacja bieżącego brancha o zmiany wprowadzone w branchu zdalnym
 if [ "$current_branch" != "master" ]; then
 
     status=`execute "git merge origin/$current_branch"`
@@ -56,22 +59,16 @@ if [ "$current_branch" != "master" ]; then
 
 fi;
 
+# Push zmian
+if [ `isUp2Date` -eq 0  ]; then
+    status=`execute "git push origin $current_branch"`
+    echo "$status"
 
-if [[ -z $status ]]; then
-     echo "Wystąpił błąd"
-else
-    if [ `isUp2Date` -eq 0  ]; then
-        status=`execute "git push origin $current_branch"`
-        echo "$status"
-
-        if [[ `isUp2Date` -eq 0 ]]; then
-            echo "Wystąpił błąd"
-        else
-            echo "Push zakończony sukcesem"
-        fi;
+    if [[ `isUp2Date` -eq 0 ]]; then
+        echo "Wystąpił błąd"
     else
-        echo "Twoje zmiany zostały już wysłane do repozytorium"
+        echo "Push zakończony sukcesem"
     fi;
+else
+    echo "Twoje zmiany zostały już wysłane do repozytorium"
 fi;
-
-
