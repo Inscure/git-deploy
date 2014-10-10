@@ -80,7 +80,7 @@ if [ `isUp2Date` -eq 0  ]; then
         exit
     fi;
 else
-    echo "Twoje zmiany zostały już wysłane do repozytorium"
+    echo "Zmiany z brancha $source_branch zostały zamieszczone w zdalnym repozytorium."
 fi;
 
 if [ "$#" -gt 0 ]; then
