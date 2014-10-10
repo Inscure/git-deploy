@@ -28,6 +28,8 @@ function toCommit {
     fi;
 }
 
+
+
 # Weryfikacja, czy są jakieś zmiany do zatwierdzenia
 if [ `toCommit` -eq 1 ]; then
     echo "Znaleziono zmiany, które nie są zatwierdzone."
@@ -67,7 +69,14 @@ if [ `isUp2Date` -eq 0  ]; then
     if [[ `isUp2Date` -eq 0 ]]; then
         echo "Wystąpił błąd"
     else
-        echo "Push zakończony sukcesem"
+
+        if [ "$#" -gt 0 ]; then
+            basedir="$(dirname "$0")"
+            "$basedir/deploy.sh"
+        else
+            echo "Push zakończony sukcesem"
+        fi;
+ 
     fi;
 else
     echo "Twoje zmiany zostały już wysłane do repozytorium"
