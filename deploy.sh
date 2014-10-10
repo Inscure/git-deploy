@@ -21,7 +21,7 @@ function isUp2Date {
 
 function execute {
     echo "$@"
-    `$@`
+    exec "$@"
 }
 
 function toCommit {
