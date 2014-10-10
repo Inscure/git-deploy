@@ -20,7 +20,7 @@ function isUp2Date {
 }
 
 function execute {
-    printf "\e[31m$@\e[0m\n"
+    printf "\n\e[31m$@\e[0m\n"
     exec $@
 }
 
