@@ -72,7 +72,7 @@ if [ `isUp2Date` -eq 0  ]; then
 
         if [ "$#" -gt 0 ]; then
             basedir="$(dirname "$0")"
-            "$basedir/deploy.sh"
+            `source "$basedir/deploy.sh"`
         else
             echo "Push zakończony sukcesem"
         fi;
