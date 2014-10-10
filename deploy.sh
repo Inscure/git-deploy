@@ -1,7 +1,5 @@
 #!/bin/bash
 
-printf "\n"
-
 current_branch=`git rev-parse --abbrev-ref HEAD`
 
 if [ $# -gt 1 ]; then
