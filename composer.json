@@ -1,0 +1,10 @@
+{
+	"name": "pl/git-deploy",
+	"config": {
+		"bin-dir": "./bin"
+	},
+	"bin": [
+		"bin/deploy.sh",
+		"bin/merge.sh"
+	]
+}
