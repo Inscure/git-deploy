@@ -47,7 +47,7 @@ fi;
 echo `execute "git fetch"`
 
 # Aktualizacja bieżącego brancha o branch master
-echo `$(execute) "git merge origin/master"`
+echo `execute "git merge origin/master"`
 
 if [ `toCommit` -eq 1 ]; then
     echo "Rozwiąż konflikt"
