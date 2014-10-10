@@ -44,12 +44,16 @@ if [ `toCommit` -eq 1 ]; then
     exit;
 fi;
 
-status=`execute "git merge origin/$current_branch"`
-echo "$status"
+if [ "$current_branch" != "master" ]; then
 
-if [ `toCommit` -eq 1 ]; then
-    echo "Rozwiąż konflikt"
-    exit;
+    status=`execute "git merge origin/$current_branch"`
+    echo "$status"
+
+    if [ `toCommit` -eq 1 ]; then
+        echo "Rozwiąż konflikt"
+        exit;
+    fi;
+
 fi;
 
 
