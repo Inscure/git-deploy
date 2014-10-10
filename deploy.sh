@@ -41,7 +41,7 @@ if [ `toCommit` -eq 1 ]; then
 fi;
 
 if [ $current_branch != $source_branch ]; then
-    echo `execute "git checkout $source_branch"`
+   execute "git checkout $source_branch"
 fi;
 
 execute "git fetch"
@@ -57,8 +57,7 @@ fi;
 # Aktualizacja bieżącego brancha o zmiany wprowadzone w branchu zdalnym
 if [ "$source_branch" != "master" ]; then
 
-    status=`execute "git merge origin/$source_branch"`
-    echo "$status"
+    execute "git merge origin/$source_branch"
 
     if [ `toCommit` -eq 1 ]; then
         echo "Rozwiąż konflikt"
@@ -89,11 +88,9 @@ else
 fi;
 
 if [ $current_branch != $source_branch ]; then
-    status=`execute "git checkout $current_branch"`
-    echo "$status"
+    execute "git checkout $current_branch"
 fi;
 
 if [ $current_branch != $source_branch ]; then
-    status=`execute "git checkout $current_branch"`
-    echo "$status"
+    execute "git checkout $current_branch"
 fi;
