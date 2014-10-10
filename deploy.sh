@@ -41,16 +41,13 @@ if [ `toCommit` -eq 1 ]; then
 fi;
 
 if [ $current_branch != $source_branch ]; then
-    status=`execute "git checkout $source_branch"`
-    echo "$status"
+    echo `$(execute) "git checkout $source_branch"`
 fi;
 
-status=`execute "git fetch"`
-echo "$status"
+echo `$(execute) "git fetch"`
 
 # Aktualizacja bieżącego brancha o branch master
-status=`execute "git merge origin/master"`
-echo "$status"
+echo `$(execute) "git merge origin/master"`
 
 if [ `toCommit` -eq 1 ]; then
     echo "Rozwiąż konflikt"
