@@ -77,6 +77,7 @@ if [ `isUp2Date` -eq 0  ]; then
 
     if [[ `isUp2Date` -eq 0 ]]; then
         echo "Wystąpił błąd"
+        exit;
     else
 
         if [ "$#" -gt 0 ]; then
@@ -85,13 +86,13 @@ if [ `isUp2Date` -eq 0  ]; then
         else
             echo "Push zakończony sukcesem"
         fi;
-
-        if [ $current_branch != $source_branch ]; then
-            status=`execute "git checkout $current_branch"`
-            echo "$status"
-        fi;
  
     fi;
 else
     echo "Twoje zmiany zostały już wysłane do repozytorium"
+fi;
+
+if [ $current_branch != $source_branch ]; then
+    status=`execute "git checkout $current_branch"`
+    echo "$status"
 fi;
