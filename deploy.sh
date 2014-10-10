@@ -77,14 +77,13 @@ if [ `isUp2Date` -eq 0  ]; then
         echo "Wystąpił błąd"
         exit
     fi;
+
+    echo "Zmiany z brancha $source_branch zostały zamieszczone w zdalnym repozytorium."
 else
     echo "Bieżący branch jest aktualny"
 fi;
 
 if [ "$#" -gt 0 ]; then
-
-    echo "Zmiany z brancha $source_branch zostały zamieszczone w zdalnym repozytorium."
-
     basedir="$(dirname "$0")"
     source "$basedir/merge.sh"
 fi;
