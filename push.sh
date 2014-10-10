@@ -8,8 +8,7 @@ echo "$commands"
 
 status=`$commands`
 
-a=`git rev-parse master`
-b=`git rev-parse origin/master`
+
 
 commands2="git merge origin/master"
 echo "$commands2"
@@ -18,7 +17,7 @@ status2=`$commands2`
 if [[ -z $status2 ]]; then
      echo "Wystąpił błąd"
 else
-    if [ $a != $b ]; then
+    if [ -z isUpToDate ]; then
         commands3="git push origin $current_branch"
         echo "$commands3"
         status3=`$commands3`
@@ -32,3 +31,14 @@ else
         echo "Twoje zmiany zostały już wysłane do repozytorium"
     fi;
 fi;
+
+function isUpToDate {
+    a=`git rev-parse master`
+    b=`git rev-parse origin/master`
+
+    if [ $a != $b ]; then
+        echo 1;
+    else
+        echo 0;
+    fi;
+}
