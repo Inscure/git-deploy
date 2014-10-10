@@ -28,7 +28,7 @@ function toCommit {
     fi;
 }
 
-if [ `toCommit` ]; then
+if [ `toCommit` -eq 1 ]; then
     echo "Znaleziono zmiany, które nie są zacommitowane. Zacommituj zmiany."
     exit;
 fi;
@@ -39,7 +39,7 @@ echo "$status"
 status=`execute "git merge origin/master"`
 echo "$status"
 
-if [ `toCommit` ]; then
+if [ `toCommit` -eq 1 ]; then
     echo "Rozwiąż konflikt"
     exit;
 fi;
@@ -47,7 +47,7 @@ fi;
 status=`execute "git merge origin/$current_branch"`
 echo "$status"
 
-if [ `toCommit` ]; then
+if [ `toCommit` -eq 1 ]; then
     echo "Rozwiąż konflikt"
     exit;
 fi;
