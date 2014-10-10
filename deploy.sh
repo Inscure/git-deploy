@@ -1,7 +1,12 @@
 #!/bin/bash
 
 current_branch=`git rev-parse --abbrev-ref HEAD`
-source_branch="$current_branch"
+
+if [ $# -gt 1 ]; then
+    source_branch="$2"
+else
+    source_branch="$current_branch"
+fi;
 
 function isUp2Date {
     local a=`git rev-parse master`
@@ -33,6 +38,11 @@ function toCommit {
 if [ `toCommit` -eq 1 ]; then
     echo "Znaleziono zmiany, które nie są zatwierdzone."
     exit;
+fi;
+
+if [ $current_branch != $source_branch ]; then
+    status=`execute "git checkout $source_branch"`
+    echo "$status"
 fi;
 
 status=`execute "git fetch"`
@@ -74,6 +84,11 @@ if [ `isUp2Date` -eq 0  ]; then
             source "$basedir/merge.sh"
         else
             echo "Push zakończony sukcesem"
+        fi;
+
+        if [ $current_branch != $source_branch ]; then
+            status=`execute "git checkout $current_branch"`
+            echo "$status"
         fi;
  
     fi;
