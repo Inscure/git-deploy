@@ -35,7 +35,7 @@ else
         echo "$commands3"
         status3=`$commands3`
 
-        if [[ -z $status3 ]]; then
+        if [[ `isUp2Date` -eq 0 ]]; then
             echo "Wystąpił błąd"
         else
             echo "Push zakończony sukcesem"
