@@ -8,7 +8,7 @@ function isUp2Date {
     a=`git rev-parse master`
     b=`git rev-parse origin/master`
 
-    if [ $a != $b ]; then
+    if [ $a == $b ]; then
         echo 1;
     else
         echo 0;
@@ -31,7 +31,7 @@ if [[ -z $status2 ]]; then
      echo "Wystąpił błąd"
 else
     isUp2Date=`isUp2Date`
-    if [ $isUp2Date == 0  ]; then
+    if [ "$isUp2Date" -eq 0  ]; then
         commands3="git push origin $current_branch"
         echo "$commands3"
         status3=`$commands3`
