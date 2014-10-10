@@ -77,21 +77,20 @@ if [ `isUp2Date` -eq 0  ]; then
 
     if [[ `isUp2Date` -eq 0 ]]; then
         echo "Wystąpił błąd"
-    else
-
-        if [ "$#" -gt 0 ]; then
-            basedir="$(dirname "$0")"
-            source "$basedir/merge.sh"
-        else
-            echo "Push zakończony sukcesem"
-        fi;
-
-        if [ $current_branch != $source_branch ]; then
-            status=`execute "git checkout $current_branch"`
-            echo "$status"
-        fi;
- 
+        exit
     fi;
 else
     echo "Twoje zmiany zostały już wysłane do repozytorium"
+fi;
+
+if [ "$#" -gt 0 ]; then
+    basedir="$(dirname "$0")"
+    source "$basedir/merge.sh"
+else
+    echo "Push zakończony sukcesem"
+fi;
+
+if [ $current_branch != $source_branch ]; then
+    status=`execute "git checkout $current_branch"`
+    echo "$status"
 fi;
