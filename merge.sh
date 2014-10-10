@@ -11,5 +11,3 @@ execute "git merge origin/$source_branch"
 execute "git push origin $target_branch"
 
 execute "git checkout $current_branch"
-
-echo "Zmiany wrzucone"
