@@ -21,7 +21,7 @@ function isUp2Date {
 
 function execute {
     echo "$@"
-    local status2=`$@`
+    `$@`
 }
 
 function toCommit {
