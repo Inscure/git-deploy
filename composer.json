@@ -1,5 +1,5 @@
 {
-	"name": "pl/git-deploy",
+	"name": "git-deploy/git-deploy",
 	"config": {
 		"bin-dir": "./bin"
 	},
