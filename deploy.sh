@@ -20,7 +20,7 @@ function isUp2Date {
 }
 
 function execute {
-    echo -e "\e[31m$@\e[0m"
+    echo -e "\e[31m$@\e[0m\n"
     exec $@
 }
 
