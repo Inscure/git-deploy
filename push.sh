@@ -2,6 +2,19 @@
 
 current_branch=`git rev-parse --abbrev-ref HEAD`
 
+
+
+function isUpToDate {
+    a=`git rev-parse master`
+    b=`git rev-parse origin/master`
+
+    if [ $a != $b ]; then
+        echo 1;
+    else
+        echo 0;
+    fi;
+}
+
 commands="git fetch"
 
 echo "$commands"
@@ -17,7 +30,8 @@ status2=`$commands2`
 if [[ -z $status2 ]]; then
      echo "Wystąpił błąd"
 else
-    if [ -z isUpToDate ]; then
+    isUp2Date=$(isUpToDate)
+    if [ -z $isUp2Date ]; then
         commands3="git push origin $current_branch"
         echo "$commands3"
         status3=`$commands3`
@@ -32,13 +46,3 @@ else
     fi;
 fi;
 
-function isUpToDate {
-    a=`git rev-parse master`
-    b=`git rev-parse origin/master`
-
-    if [ $a != $b ]; then
-        echo 1;
-    else
-        echo 0;
-    fi;
-}
