@@ -28,6 +28,9 @@ echo "$status"
 status=`execute "git merge origin/master"`
 echo "$status"
 
+status=`execute "git merge origin/$current_branch"`
+echo "$status"
+
 if [[ -z $status ]]; then
      echo "Wystąpił błąd"
 else
