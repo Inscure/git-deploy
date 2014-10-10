@@ -1,6 +1,11 @@
 #!/bin/bash
 
-current_branch=`git rev-parse --abbrev-ref HEAD`
+function current {
+    echo `git rev-parse --abbrev-ref HEAD`
+}
+
+
+current_branch=$(current)
 
 if [ $# -gt 1 ]; then
     source_branch="$2"
@@ -86,11 +91,7 @@ if [ "$#" -gt 0 ]; then
     source "$basedir/merge.sh"
 fi;
 
-if [ $current_branch != $source_branch ]; then
-    execute "git checkout $current_branch"
-fi;
-
-if [ $current_branch != $source_branch ]; then
+if [ $current_branch != `current` ]; then
     execute "git checkout $current_branch"
 fi;
 

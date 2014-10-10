@@ -9,5 +9,3 @@ execute "git merge origin/$target_branch"
 execute "git merge $source_branch"
 
 execute "git push origin $target_branch"
-
-execute "git checkout $current_branch"
