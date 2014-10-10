@@ -4,7 +4,6 @@ function current {
     echo `git rev-parse --abbrev-ref HEAD`
 }
 
-
 current_branch=$(current)
 
 if [ $# -gt 1 ]; then
@@ -91,7 +90,7 @@ if [ "$#" -gt 0 ]; then
     source "$basedir/merge.sh"
 fi;
 
-if [ $current_branch != `current` ]; then
+if [ $current_branch != $(current) ]; then
     execute "git checkout $current_branch"
 fi;
 
