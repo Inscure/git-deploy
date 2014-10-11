@@ -22,5 +22,5 @@ sh deploy.sh target
 ```
 sh deploy.sh target source
 ```
-
+----
 Each command also merge `origin/master` into the `source` and/or `target` branch so you will have your branch up to date with production state.
