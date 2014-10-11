@@ -2,7 +2,7 @@
 	"name": "git-deploy/git-deploy",
 	"license": "MIT",
 	"config": {
-		"bin-dir": "/../bin"
+		"bin-dir": "bin"
 	},
 	"bin": [
 		"bin/deploy.sh",
