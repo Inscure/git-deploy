@@ -22,6 +22,8 @@ You can download this package as an ZIP archive or use Composer to install in yo
 
 ## Usages
 
+You should run the script via GIT Bash or Unix terminal.
+
 ##### Push the current branch to a remote repository.
 
 ```
