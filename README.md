@@ -1,7 +1,7 @@
 git-deploy
 ==========
 
-Git helpers for application deployment
+Bash script for better GIT application deployment.
 
 ## Installation
 
