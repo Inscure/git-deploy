@@ -14,7 +14,7 @@ sh deploy.sh
 ##### Merge the current branch into the `target` and push both to a remote repository.
 
 ```
-sh deploy.sh target_branch
+sh deploy.sh target
 ```
 
 ##### Merge the `source` branch into the `target` and push both to a remote repository.
