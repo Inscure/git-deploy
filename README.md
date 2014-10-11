@@ -1,3 +1,7 @@
+[![](http://img.shields.io/packagist/l/git-deploy/git-deploy.svg)](https://packagist.org/packages/git-deploy/git-deploy)
+[![](http://img.shields.io/packagist/v/git-deploy/git-deploy.svg)](https://packagist.org/packages/git-deploy/git-deploy)
+[![](http://img.shields.io/packagist/dt/git-deploy/git-deploy.svg)](https://packagist.org/packages/git-deploy/git-deploy)
+
 git-deploy
 ==========
 
