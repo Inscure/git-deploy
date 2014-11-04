@@ -57,6 +57,7 @@ execute "git fetch"
 # Aktualizacja bieżącego brancha o branch master
 execute "git merge origin/master"
 
+# Sprawdzanie, czy wystąpił konflikt
 if [ `toCommit` -eq 1 ]; then
     printf "Rozwiąż konflikt\n"
     exit;
@@ -79,7 +80,7 @@ if [ `isUp2Date` -eq 0  ]; then
     execute "git push origin $source_branch"
 
     if [[ `isUp2Date` -eq 0 ]]; then
-        printf "Wystąpił błąd\n"
+        printf "Wystąpił nieznany błąd\n"
         exit
     fi;
 
