@@ -13,8 +13,11 @@ else
 fi;
 
 function isUp2Date {
-    local a=`git rev-parse master`
-    local b=`git rev-parse origin/master`
+
+	current=$(current)
+	
+    local a=`git rev-parse $current`
+    local b=`git rev-parse origin/$current`
 
     if [ $a == $b ]; then
         echo 1;
