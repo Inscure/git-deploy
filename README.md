@@ -16,7 +16,7 @@ You can download this package as an ZIP archive or use Composer to install in yo
 ```
 {
     "require": {
-        "git-deploy/git-deploy": "1.0.0-beta.1"
+        "git-deploy/git-deploy": "1.0.0-beta.2"
     },
     "config": {
         "bin-dir": "bin"
